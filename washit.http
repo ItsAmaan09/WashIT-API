@@ -1,0 +1,6 @@
+@washit_HostAddress = http://localhost:5191
+
+GET {{washit_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
