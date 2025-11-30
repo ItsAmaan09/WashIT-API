@@ -10,5 +10,6 @@ namespace washit.services
         Task<IEnumerable<Machine>> GetMachines();
         Task<string> CheckMachineAvailability(int id, string userName);
         Task<Reservation?> GetReservationByMachineIdAsync(int machineId, string userName);
+        Task<Reservation?> GetUserActiveReservationAsync(int? userId);
     }
 }

@@ -4,7 +4,7 @@ namespace washit.repository
 {
     public interface IReservationRepository
     {
-        Task<Reservation?> GetActiveMachineAsync(int washTypeId);
+        Task<Machine?> GetActiveMachineAsync(int washTypeId);
         Task<int> CreateReservationAsync(Reservation reservation);
         Task<bool> CancelReservationAsync(int reservationId);
         Task<int> AddToWaitingListAsync(WaitingListEntry entry);
@@ -14,6 +14,7 @@ namespace washit.repository
         Task<IEnumerable<Machine>> GetAllActiveMachineAsync();
         Task<Reservation?> GetActiveReservationByMachineIdAsync(int id);
         Task<Reservation?> GetReservationByMachineIdAsync(int machineId, string userName);
+        Task<Reservation?> GetUserActiveReservationAsync(int? userId);
 
     }
 }

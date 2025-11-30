@@ -12,7 +12,7 @@ namespace washit.repository
             _db = db;
         }
 
-        public async Task<Reservation?> GetActiveMachineAsync(int washTypeId)
+        public async Task<Machine?> GetActiveMachineAsync(int washTypeId)
         {
             using var conn = _db.CreateConnection();
             try
@@ -26,7 +26,7 @@ namespace washit.repository
                     WHERE r.MachineId = m.Id AND r.IsActive = 1
                 )";
 
-                return await conn.QueryFirstOrDefaultAsync<Reservation>(sql, new { washTypeId });
+                return await conn.QueryFirstOrDefaultAsync<Machine>(sql, new { washTypeId });
             }
             catch (System.Exception)
             {
@@ -202,6 +202,21 @@ WHERE r.MachineId = @MachineId
     ";
 
             return await conn.QueryFirstOrDefaultAsync<Reservation>(sql, new { MachineId = machineId, UserName = userName });
+        }
+
+        public async Task<Reservation?> GetUserActiveReservationAsync(int? userId)
+        {
+            using var conn = _db.CreateConnection();
+
+            string sql = @"
+                            SELECT TOP 1 *
+                            FROM Reservations
+                            WHERE UserId = @UserId
+                            AND IsActive = 1
+                            ORDER BY ReservedAt DESC;
+                        ";
+
+            return await conn.QueryFirstOrDefaultAsync<Reservation>(sql, new { UserId = userId });
         }
 
     }

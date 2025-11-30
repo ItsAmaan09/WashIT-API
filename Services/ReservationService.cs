@@ -28,7 +28,14 @@ namespace washit.services
 
                 if (machine == null)
                 {
-                    throw new Exception("Machine of that washType is not available");
+                    throw new Exception("No available machine found for this wash type.");
+                }
+
+                var existing = await _repo.GetUserActiveReservationAsync(userId);
+
+                if (existing != null)
+                {
+                    throw new Exception("You already have an active reservation.");
                 }
 
                 var reservation = new Reservation
@@ -141,6 +148,12 @@ namespace washit.services
         {
             return await _repo.GetReservationByMachineIdAsync(machineId, userName);
         }
+
+        public async Task<Reservation?> GetUserActiveReservationAsync(int? userId)
+        {
+            return await _repo.GetUserActiveReservationAsync(userId);
+        }
+
 
     }
 }
