@@ -22,21 +22,37 @@ namespace washit.controllers
         [HttpPost("reserve")]
         public async Task<IActionResult> Reserve([FromBody] MakeReservationDto dto)
         {
-            var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+            try
+            {
+                var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
 
-            var result = await _service.ReserveMachineAsync(userId, dto.WashTypeId);
-            if (result == null) return BadRequest(result);
+                var result = await _service.ReserveMachineAsync(userId, dto.WashTypeId);
+                if (result == null) return BadRequest(result);
 
-            return Ok(result);
+                return Ok(result);
+
+            }
+            catch (System.Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         [Authorize]
         [HttpPost("cancel")]
         public async Task<IActionResult> Cancel([FromBody] CancelReservationDto dto)
         {
-            var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
-            bool success = await _service.CancelReservationAsync(dto.ReservationId, userId);
-            if (!success) return BadRequest(success);
+            try
+            {
+                var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                bool success = await _service.CancelReservationAsync(dto.ReservationId, userId);
+                if (!success) return BadRequest(success);
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
             return Ok();
         }
@@ -45,8 +61,17 @@ namespace washit.controllers
         [HttpPost("waitlist")]
         public async Task<IActionResult> Waitlist([FromBody] JoinWaitingListDto dto)
         {
-            int id = await _service.JoinWaitingListAsync(dto.UserName, dto.WashTypeId);
-            return Ok(new { WaitingListId = id });
+            try
+            {
+                var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                int id = await _service.JoinWaitingListAsync(userId, dto.WashTypeId);
+                return Ok(new { WaitingListId = id });
+
+            }
+            catch (System.Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpGet("machines")]

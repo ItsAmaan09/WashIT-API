@@ -104,14 +104,20 @@ namespace washit.services
             }
         }
 
-        public async Task<int> JoinWaitingListAsync(string userName, int washTypeId)
+        public async Task<int> JoinWaitingListAsync(int? userId, int washTypeId)
         {
             try
             {
+                if (userId == null || userId == 0)
+                {
+                    throw new Exception("User Id is required");
+                }
+
                 return await _repo.AddToWaitingListAsync(new WaitingListEntry
                 {
-                    UserName = userName,
-                    WashTypeId = washTypeId
+                    UserId = userId.Value,
+                    WashTypeId = washTypeId,
+                    CreatedBy = userId.ToString()
                 });
 
             }

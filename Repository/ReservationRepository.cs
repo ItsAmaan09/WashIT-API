@@ -115,8 +115,8 @@ namespace washit.repository
             try
             {
                 string sql = @"
-                INSERT INTO WaitingList (UserName, WashTypeId)
-                VALUES (@UserName, @WashTypeId);
+                INSERT INTO WaitingList (WashTypeId,CreatedBy,UserId)
+                VALUES (@WashTypeId, @CreatedBy, @UserId);
                 SELECT SCOPE_IDENTITY();";
 
                 return await conn.ExecuteScalarAsync<int>(sql, entry);
