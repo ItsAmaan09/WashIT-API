@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using washit.repository;
 using washit.services;
+using washit.utility;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -70,6 +71,8 @@ app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthorization();
 
