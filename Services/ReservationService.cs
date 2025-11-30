@@ -27,7 +27,9 @@ namespace washit.services
                 var machine = await _repo.GetActiveMachineAsync(washTypeId);
 
                 if (machine == null)
-                    return null;
+                {
+                    throw new Exception("Machine of that washType is not available");
+                }
 
                 var reservation = new Reservation
                 {

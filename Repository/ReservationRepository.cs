@@ -68,8 +68,8 @@ namespace washit.repository
             try
             {
                 string sql = @"
-                INSERT INTO Reservations (MachineId, UserId, WashTypeId, ReservedAt, IsActive)
-                VALUES (@MachineId, @UserId, @WashTypeId, @ReservedAt, 1);
+                INSERT INTO Reservations (MachineId, UserId, WashTypeId, ReservedAt, IsActive, CreatedBy)
+                VALUES (@MachineId, @UserId, @WashTypeId, @ReservedAt, 1, @CreatedBy);
                 SELECT SCOPE_IDENTITY();";
 
                 return await conn.ExecuteScalarAsync<int>(sql, reservation);

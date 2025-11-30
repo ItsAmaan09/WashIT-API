@@ -4,10 +4,9 @@ namespace washit.dtos
 {
     public class MakeReservationDto
     {
-        [Required]
-        public int UserId { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "WashType Id must be greater than 0")]
         public int WashTypeId { get; set; }
     }
 }
