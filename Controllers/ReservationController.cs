@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using washit.services;
 using washit.dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace washit.controllers
 {
@@ -15,10 +16,10 @@ namespace washit.controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpPost("reserve")]
         public async Task<IActionResult> Reserve([FromBody] MakeReservationDto dto)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var result = await _service.ReserveMachineAsync(dto.UserName, dto.WashTypeId);
             if (result == null) return BadRequest(result);
@@ -29,8 +30,6 @@ namespace washit.controllers
         [HttpPost("cancel")]
         public async Task<IActionResult> Cancel([FromBody] CancelReservationDto dto)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             bool success = await _service.CancelReservationAsync(dto.ReservationId);
             if (!success) return NotFound();
 
@@ -40,8 +39,6 @@ namespace washit.controllers
         [HttpPost("waitlist")]
         public async Task<IActionResult> Waitlist([FromBody] JoinWaitingListDto dto)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-
             int id = await _service.JoinWaitingListAsync(dto.UserName, dto.WashTypeId);
             return Ok(new { WaitingListId = id });
         }
@@ -60,7 +57,7 @@ namespace washit.controllers
         }
 
         [HttpGet("by-machine")]
-        public async Task<IActionResult> GetReservationByMachineId( int machineId, string userName)
+        public async Task<IActionResult> GetReservationByMachineId(int machineId, string userName)
         {
             var reservation = await _service.GetReservationByMachineIdAsync(machineId, userName);
             if (reservation == null)

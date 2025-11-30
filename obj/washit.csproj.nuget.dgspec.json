@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj": {}
+    "c:\\My Data\\Work\\WEB API\\washit\\washit.csproj": {}
   },
   "projects": {
-    "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj": {
+    "c:\\My Data\\Work\\WEB API\\washit\\washit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
+        "projectUniqueName": "c:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
         "projectName": "washit",
-        "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
+        "projectPath": "c:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
         "packagesPath": "C:\\Users\\Its_A\\.nuget\\packages\\",
-        "outputPath": "C:\\My Data\\Work\\WEB API\\washit\\obj\\",
+        "outputPath": "c:\\My Data\\Work\\WEB API\\washit\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Its_A\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -46,6 +46,10 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.1.66, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.22, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",

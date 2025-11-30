@@ -38,3 +38,11 @@ c:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.pdb
 c:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.genruntimeconfig.cache
 c:\My Data\Work\WEB API\washit\obj\Debug\net8.0\ref\washit.dll
 C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.sourcelink.json
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+c:\My Data\Work\WEB API\washit\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
