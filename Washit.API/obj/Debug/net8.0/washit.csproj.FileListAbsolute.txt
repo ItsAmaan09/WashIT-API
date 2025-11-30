@@ -1,0 +1,8 @@
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.csproj.AssemblyReference.cache
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.GeneratedMSBuildEditorConfig.editorconfig
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.AssemblyInfoInputs.cache
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.AssemblyInfo.cs
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.csproj.CoreCompileInputs.cache
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.MvcApplicationPartsAssemblyInfo.cs
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.MvcApplicationPartsAssemblyInfo.cache
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.sourcelink.json
