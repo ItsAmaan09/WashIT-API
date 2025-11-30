@@ -27,6 +27,7 @@ namespace washit.controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("cancel")]
         public async Task<IActionResult> Cancel([FromBody] CancelReservationDto dto)
         {
@@ -36,6 +37,7 @@ namespace washit.controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpPost("waitlist")]
         public async Task<IActionResult> Waitlist([FromBody] JoinWaitingListDto dto)
         {
@@ -65,7 +67,5 @@ namespace washit.controllers
 
             return Ok(reservation);
         }
-
-
     }
 }
