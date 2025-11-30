@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using washit.models;
 using washit.repository;
 
@@ -6,16 +7,23 @@ namespace washit.services
     public class ReservationService : IReservationService
     {
         private readonly IReservationRepository _repo;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ReservationService(IReservationRepository repo)
+        public ReservationService(IReservationRepository repo, IHttpContextAccessor httpContextAccessor)
         {
             _repo = repo;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Reservation?> ReserveMachineAsync(string userName, int washTypeId)
+        public async Task<Reservation?> ReserveMachineAsync(int? userId, int washTypeId)
         {
             try
             {
+                if (userId == null || userId == 0)
+                {
+                    throw new Exception("Please Provide User Id");
+                }
+
                 var machine = await _repo.GetActiveMachineAsync(washTypeId);
 
                 if (machine == null)
@@ -24,9 +32,10 @@ namespace washit.services
                 var reservation = new Reservation
                 {
                     MachineId = machine.Id,
-                    UserName = userName,
+                    UserId = userId.Value,
                     WashTypeId = washTypeId,
                     ReservedAt = DateTime.UtcNow,
+                    CreatedBy = userId.ToString(),
                     IsActive = true
                 };
 
@@ -113,8 +122,8 @@ namespace washit.services
                     return "Available";
 
                 // Reserved by same user
-                if (reservation.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
-                    return "Reserved by you";
+                // if (reservation.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
+                //     return "Reserved by you";
 
                 // Reserved by someone else
                 return "Reserve by other";

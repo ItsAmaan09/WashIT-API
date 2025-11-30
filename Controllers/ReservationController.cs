@@ -10,18 +10,21 @@ namespace washit.controllers
     public class ReservationsController : ControllerBase
     {
         private readonly IReservationService _service;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ReservationsController(IReservationService service)
+        public ReservationsController(IReservationService service, IHttpContextAccessor httpContextAccessor)
         {
             _service = service;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [Authorize]
         [HttpPost("reserve")]
         public async Task<IActionResult> Reserve([FromBody] MakeReservationDto dto)
         {
+            var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
 
-            var result = await _service.ReserveMachineAsync(dto.UserName, dto.WashTypeId);
+            var result = await _service.ReserveMachineAsync(userId, dto.WashTypeId);
             if (result == null) return BadRequest(result);
 
             return Ok(result);
