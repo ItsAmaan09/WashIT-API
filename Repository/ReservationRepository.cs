@@ -86,14 +86,15 @@ namespace washit.repository
             }
         }
 
-        public async Task<bool> CancelReservationAsync(int reservationId)
+        public async Task<bool> CancelReservationAsync(int reservationId, int? userId)
         {
             using var conn = _db.CreateConnection();
+
             try
             {
 
-                string sql = @"UPDATE Reservations SET IsActive = 0 WHERE Id = @reservationId";
-                return await conn.ExecuteAsync(sql, new { reservationId }) > 0;
+                string sql = @"UPDATE Reservations SET IsActive = 0 WHERE Id = @reservationId AND UserId = @userId AND IsActive = 1";
+                return await conn.ExecuteAsync(sql, new { reservationId, userId }) > 0;
 
             }
             catch (System.Exception)
@@ -162,7 +163,7 @@ namespace washit.repository
 
         public async Task<Reservation?> GetReservationByIdAsync(int reservationId)
         {
-            string sql = @"SELECT Id, WashTypeId FROM Reservations WHERE Id = @Id";
+            string sql = @"SELECT Id, WashTypeId, UserId, IsActive FROM Reservations WHERE Id = @Id";
 
             using var conn = _db.CreateConnection();
             return await conn.QueryFirstOrDefaultAsync<Reservation>(sql, new { Id = reservationId });

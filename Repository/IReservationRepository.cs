@@ -6,7 +6,7 @@ namespace washit.repository
     {
         Task<Machine?> GetActiveMachineAsync(int washTypeId);
         Task<int> CreateReservationAsync(Reservation reservation);
-        Task<bool> CancelReservationAsync(int reservationId);
+        Task<bool> CancelReservationAsync(int reservationId, int? userId);
         Task<int> AddToWaitingListAsync(WaitingListEntry entry);
         Task MarkUserAsNotifiedAsync(int id);
         Task<WaitingListEntry?> GetNextWaitingUserAsync(int washTypeId);

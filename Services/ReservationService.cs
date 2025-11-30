@@ -60,19 +60,33 @@ namespace washit.services
 
         }
 
-        public async Task<bool> CancelReservationAsync(int reservationId)
+        public async Task<bool> CancelReservationAsync(int reservationId, int? userId)
         {
             try
             {
+                if (userId == null || userId == 0)
+                {
+                    throw new Exception("User Id is required");
+                }
                 var reservation = await _repo.GetReservationByIdAsync(reservationId);
-                if (reservation == null)
-                    return false;
+
+                if (reservation == null || !reservation.IsActive)
+                {
+                    throw new Exception("No Active Reservation found.");
+                }
+
+                if (reservation.UserId != userId)
+                {
+                    throw new Exception("You cannot cancel someone else's reservation.");
+                }
 
                 // Cancel reservation
-                bool cancelled = await _repo.CancelReservationAsync(reservationId);
+                bool cancelled = await _repo.CancelReservationAsync(reservationId, userId);
 
                 if (!cancelled)
-                    return false;
+                {
+                    throw new Exception("Failed to cancel the reservation.");
+                }
 
                 // Notify next user in waiting list
                 var nextUser = await _repo.GetNextWaitingUserAsync(reservation.WashTypeId);

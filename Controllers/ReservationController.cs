@@ -34,8 +34,9 @@ namespace washit.controllers
         [HttpPost("cancel")]
         public async Task<IActionResult> Cancel([FromBody] CancelReservationDto dto)
         {
-            bool success = await _service.CancelReservationAsync(dto.ReservationId);
-            if (!success) return NotFound();
+            var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+            bool success = await _service.CancelReservationAsync(dto.ReservationId, userId);
+            if (!success) return BadRequest(success);
 
             return Ok();
         }
