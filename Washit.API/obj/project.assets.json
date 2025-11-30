@@ -1397,11 +1397,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\My Data\\Work\\WEB API\\washit\\washit.API\\washit.csproj",
+      "projectUniqueName": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\washit.csproj",
       "projectName": "washit",
-      "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\washit.API\\washit.csproj",
+      "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\washit.csproj",
       "packagesPath": "C:\\Users\\Its_A\\.nuget\\packages\\",
-      "outputPath": "C:\\My Data\\Work\\WEB API\\washit\\washit.API\\obj\\",
+      "outputPath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Its_A\\AppData\\Roaming\\NuGet\\NuGet.Config"
