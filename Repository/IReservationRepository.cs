@@ -13,7 +13,6 @@ namespace washit.repository
         Task<Reservation?> GetReservationByIdAsync(int reservationId);
         Task<IEnumerable<Machine>> GetAllActiveMachineAsync();
         Task<Reservation?> GetActiveReservationByMachineIdAsync(int id);
-        Task<Reservation?> GetReservationByMachineIdAsync(int machineId, string userName);
         Task<Reservation?> GetUserActiveReservationAsync(int? userId);
 
     }

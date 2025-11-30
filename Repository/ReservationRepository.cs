@@ -172,37 +172,13 @@ namespace washit.repository
         public async Task<Reservation?> GetActiveReservationByMachineIdAsync(int machineId)
         {
             using var conn = _db.CreateConnection();
-
-            //     string sql = @"
-            // SELECT Id, MachineId, UserName, IsActive FROM Reservations
-            // WHERE MachineId = @MachineId";
             string sql = @"
             SELECT
-            Id, MachineId, UserName, IsActive
+            Id, MachineId, UserId, IsActive
             FROM Reservations
             WHERE MachineId = @MachineId
             AND IsActive = 1";
             return await conn.QueryFirstOrDefaultAsync<Reservation>(sql, new { MachineId = machineId });
-        }
-
-        public async Task<Reservation?> GetReservationByMachineIdAsync(int machineId, string userName)
-        {
-            using var conn = _db.CreateConnection();
-
-            string sql = @"
-        SELECT
-    r.Id,
-    r.UserName,
-    r.MachineId,
-    r.IsActive
-FROM Reservations r
-WHERE r.MachineId = @MachineId
-  AND r.UserName = @UserName
-  AND r.IsActive = 1;
-
-    ";
-
-            return await conn.QueryFirstOrDefaultAsync<Reservation>(sql, new { MachineId = machineId, UserName = userName });
         }
 
         public async Task<Reservation?> GetUserActiveReservationAsync(int? userId)

@@ -80,21 +80,21 @@ namespace washit.controllers
             return Ok(await _service.GetMachines());
         }
 
-        [HttpGet("checkMachineAvailability")]
-        public async Task<IActionResult> CheckMachineAvailability(int id, string userName)
+        [Authorize]
+        [HttpGet("GetMachinesWithStatus")]
+        public async Task<IActionResult> GetMachinesWithStatus()
         {
-            var status = await _service.CheckMachineAvailability(id, userName);
-            return Ok(new { status });
+            try
+            {
+                var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                var machines = await _service.GetMachinesWithStatusAsync(userId);
+                return Ok(machines);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpGet("by-machine")]
-        public async Task<IActionResult> GetReservationByMachineId(int machineId, string userName)
-        {
-            var reservation = await _service.GetReservationByMachineIdAsync(machineId, userName);
-            if (reservation == null)
-                return NotFound("No active reservation found for this machine.");
-
-            return Ok(reservation);
-        }
     }
 }

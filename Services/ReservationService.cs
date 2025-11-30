@@ -140,40 +140,51 @@ namespace washit.services
             }
         }
 
-        public async Task<string> CheckMachineAvailability(int id, string userName)
-        {
-            try
-            {
-                var reservation = await _repo.GetActiveReservationByMachineIdAsync(id);
-
-                // No reservation found
-                if (reservation == null)
-                    return "Available";
-
-                // Reserved by same user
-                // if (reservation.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase))
-                //     return "Reserved by you";
-
-                // Reserved by someone else
-                return "Reserve by other";
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public async Task<Reservation?> GetReservationByMachineIdAsync(int machineId, string userName)
-        {
-            return await _repo.GetReservationByMachineIdAsync(machineId, userName);
-        }
-
         public async Task<Reservation?> GetUserActiveReservationAsync(int? userId)
         {
             return await _repo.GetUserActiveReservationAsync(userId);
         }
 
+        public async Task<List<Machine>> GetMachinesWithStatusAsync(int userId)
+        {
+            var machines = await this.GetMachines();
+
+            var machineStatusList = new List<Machine>();
+
+            foreach (var m in machines)
+            {
+                var reservation = await _repo.GetActiveReservationByMachineIdAsync(m.Id);
+
+                string status;
+                int? reservationId = null;
+
+                if (reservation == null)
+                {
+                    status = "Available";
+                }
+                else if (reservation.UserId == userId)
+                {
+                    status = "Reserved by you";
+                    reservationId = reservation.Id;
+                }
+                else
+                {
+                    status = "Reserved by other";
+                    reservationId = reservation.Id;
+                }
+
+                machineStatusList.Add(new Machine
+                {
+                    Id = m.Id,
+                    MachineName = m.MachineName,
+                    WashTypeId = m.WashTypeId,
+                    IsActive = m.IsActive,
+                    Status = status,
+                    ReservationId = reservationId
+                });
+            }
+            return machineStatusList;
+        }
 
     }
 }
