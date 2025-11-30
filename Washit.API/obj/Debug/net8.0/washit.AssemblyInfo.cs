@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("washit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c4cb6a75ae1b92d7e56ec9e147fd7f38eaa261b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66a54fbfa6d86fe78c1fe2097c0ef125644268d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("washit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("washit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

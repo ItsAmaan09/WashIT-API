@@ -4,14 +4,14 @@
     "C:\\My Data\\Work\\WEB API\\washit\\washit.tests\\WashIt.Tests.csproj": {}
   },
   "projects": {
-    "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj": {
+    "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\washit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
+        "projectUniqueName": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\washit.csproj",
         "projectName": "washit",
-        "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
+        "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\washit.csproj",
         "packagesPath": "C:\\Users\\Its_A\\.nuget\\packages\\",
-        "outputPath": "C:\\My Data\\Work\\WEB API\\washit\\obj\\",
+        "outputPath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Its_A\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -109,8 +109,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj": {
-                "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj"
+              "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\washit.csproj": {
+                "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\washit.csproj"
               }
             }
           }

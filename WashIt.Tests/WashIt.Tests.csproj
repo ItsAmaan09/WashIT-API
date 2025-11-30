@@ -23,6 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\washit.csproj" />
+    <ProjectReference Include="..\Washit.API\washit.csproj" />
   </ItemGroup>
 </Project>
