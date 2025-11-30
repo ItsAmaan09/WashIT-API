@@ -37,3 +37,4 @@ c:\My Data\Work\WEB API\washit\obj\Debug\net8.0\refint\washit.dll
 c:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.pdb
 c:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.genruntimeconfig.cache
 c:\My Data\Work\WEB API\washit\obj\Debug\net8.0\ref\washit.dll
+C:\My Data\Work\WEB API\washit\obj\Debug\net8.0\washit.sourcelink.json

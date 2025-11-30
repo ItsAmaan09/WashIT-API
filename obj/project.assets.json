@@ -1089,11 +1089,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
+      "projectUniqueName": "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
       "projectName": "washit",
-      "projectPath": "c:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
+      "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\washit.csproj",
       "packagesPath": "C:\\Users\\Its_A\\.nuget\\packages\\",
-      "outputPath": "c:\\My Data\\Work\\WEB API\\washit\\obj\\",
+      "outputPath": "C:\\My Data\\Work\\WEB API\\washit\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Its_A\\AppData\\Roaming\\NuGet\\NuGet.Config"
