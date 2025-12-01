@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Washit.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fd3cdd79ab681fe0eb15090c12a37681ee88ece")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38a42abf59fa3748980be04f75eab2914ea10469")]
 [assembly: System.Reflection.AssemblyProductAttribute("Washit.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Washit.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
