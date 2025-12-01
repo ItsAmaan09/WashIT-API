@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj": {}
+    "c:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj": {}
   },
   "projects": {
-    "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj": {
+    "c:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj",
+        "projectUniqueName": "c:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj",
         "projectName": "Washit.API",
-        "projectPath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj",
+        "projectPath": "c:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj",
         "packagesPath": "C:\\Users\\Its_A\\.nuget\\packages\\",
-        "outputPath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\obj\\",
+        "outputPath": "c:\\My Data\\Work\\WEB API\\washit\\Washit.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Its_A\\AppData\\Roaming\\NuGet\\NuGet.Config"

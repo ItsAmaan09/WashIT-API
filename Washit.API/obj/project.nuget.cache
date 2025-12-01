@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NG+dcgnp1/k=",
+  "dgSpecHash": "1IbZHOdBiks=",
   "success": true,
-  "projectFilePath": "C:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj",
+  "projectFilePath": "c:\\My Data\\Work\\WEB API\\washit\\Washit.API\\Washit.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Its_A\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
     "C:\\Users\\Its_A\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.22\\microsoft.aspnetcore.authentication.jwtbearer.8.0.22.nupkg.sha512",

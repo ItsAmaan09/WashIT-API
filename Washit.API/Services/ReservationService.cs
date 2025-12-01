@@ -28,7 +28,7 @@ namespace washit.services
 
                 if (machine == null)
                 {
-                    throw new Exception("No available machine found for this wash type.");
+                    throw new Exception("No available machine or someone else reserve this machine.");
                 }
 
                 var existing = await _repo.GetUserActiveReservationAsync(userId);
