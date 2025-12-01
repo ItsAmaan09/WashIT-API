@@ -54,10 +54,39 @@ namespace washit.tests
 
             _mockReservationRepository.Setup(x => x.GetUserActiveReservationAsync(1)).ReturnsAsync(new Reservation { Id = 99 });
 
-            var ex = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(1,1));
+            var ex = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(1, 1));
 
             Assert.Equal("You already have an active reservation.", ex.Message);
 
+        }
+
+        // -----------------------------------------
+        // TEST 4: Successfully reservation creation
+        // -----------------------------------------
+
+        [Fact]
+        public async Task ReserveMachineAsync_ShouldCreateReservation_WhenValid()
+        {
+            // Arrange
+            var machine = new Machine { Id = 10 };
+            _mockReservationRepository.Setup(x => x.GetActiveMachineAsync(1)).ReturnsAsync(machine);
+
+            _mockReservationRepository.Setup(x => x.GetUserActiveReservationAsync(1)).ReturnsAsync((Reservation?)null);
+
+            _mockReservationRepository.Setup(x => x.CreateReservationAsync(It.IsAny<Reservation>())).ReturnsAsync(100); // new reservation ID
+
+            // Act
+            var result = await _reservationService.ReserveMachineAsync(1, 1);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(100, result.Id);
+            Assert.Equal(10, result.MachineId);
+            Assert.Equal(1, result.UserId);
+            Assert.True(result.IsActive);
+            Assert.Equal(1, result.WashTypeId);
+
+            _mockReservationRepository.Verify(x => x.CreateReservationAsync(It.IsAny<Reservation>()), Times.Once);
         }
     }
 }

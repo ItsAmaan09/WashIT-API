@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Washit.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38a42abf59fa3748980be04f75eab2914ea10469")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+448e17057b97ee95a5dfad42ca0958dd28363a28")]
 [assembly: System.Reflection.AssemblyProductAttribute("Washit.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Washit.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
