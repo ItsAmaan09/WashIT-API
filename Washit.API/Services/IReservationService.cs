@@ -4,7 +4,7 @@ namespace washit.services
 {
     public interface IReservationService
     {
-        Task<Reservation?> ReserveMachineAsync(int? userId, int washTypeId);
+        Task<Reservation?> ReserveMachineAsync(int? userId, int washTypeId, int machineId);
         Task<bool> CancelReservationAsync(int reservationId,int? userId);
         Task<int> JoinWaitingListAsync(int? userId, int washTypeId);
         Task<IEnumerable<Machine>> GetMachines();

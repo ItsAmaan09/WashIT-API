@@ -33,7 +33,7 @@ namespace washit.controllers
                     userId = parsedUserId;
                 }
 
-                var result = await _service.ReserveMachineAsync(userId, dto.WashTypeId);
+                var result = await _service.ReserveMachineAsync(userId, dto.WashTypeId, dto.MachineId);
                 if (result == null) return BadRequest(result);
 
                 return Ok(result);

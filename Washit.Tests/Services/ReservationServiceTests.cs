@@ -24,7 +24,7 @@ namespace washit.tests
         [Fact]
         public async Task ReserveMachineAsync_ShouldThrow_WhenUserIdIsNull()
         {
-            var exception = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(null, 1));
+            var exception = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(null, 1, 2));
 
             Assert.Equal("Please Provide User Id", exception.Message);
         }
@@ -36,9 +36,9 @@ namespace washit.tests
         [Fact]
         public async Task ReserveMachineAsync_ShouldThrow_WhenNoMachineAvailable()
         {
-            _mockReservationRepository.Setup(x => x.GetActiveMachineAsync(1)).ReturnsAsync((Machine?)null);
+            _mockReservationRepository.Setup(x => x.GetActiveMachineAsync(1, 1)).ReturnsAsync((Machine?)null);
 
-            var ex = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(1, 1));
+            var ex = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(1, 1, 2));
 
             Assert.Equal("No available machine found for this wash type.", ex.Message);
         }
@@ -50,11 +50,11 @@ namespace washit.tests
         [Fact]
         public async Task ReserveMachineAsync_ShouldThrow_WhenUserAlreadyHasReservation()
         {
-            _mockReservationRepository.Setup(x => x.GetActiveMachineAsync(1)).ReturnsAsync(new Machine { Id = 10 });
+            _mockReservationRepository.Setup(x => x.GetActiveMachineAsync(1, 1)).ReturnsAsync(new Machine { Id = 10 });
 
             _mockReservationRepository.Setup(x => x.GetUserActiveReservationAsync(1)).ReturnsAsync(new Reservation { Id = 99 });
 
-            var ex = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(1, 1));
+            var ex = await Assert.ThrowsAsync<Exception>(() => _reservationService.ReserveMachineAsync(1, 1, 2));
 
             Assert.Equal("You already have an active reservation.", ex.Message);
 
@@ -69,14 +69,14 @@ namespace washit.tests
         {
             // Arrange
             var machine = new Machine { Id = 10 };
-            _mockReservationRepository.Setup(x => x.GetActiveMachineAsync(1)).ReturnsAsync(machine);
+            _mockReservationRepository.Setup(x => x.GetActiveMachineAsync(1, 1)).ReturnsAsync(machine);
 
             _mockReservationRepository.Setup(x => x.GetUserActiveReservationAsync(1)).ReturnsAsync((Reservation?)null);
 
             _mockReservationRepository.Setup(x => x.CreateReservationAsync(It.IsAny<Reservation>())).ReturnsAsync(100); // new reservation ID
 
             // Act
-            var result = await _reservationService.ReserveMachineAsync(1, 1);
+            var result = await _reservationService.ReserveMachineAsync(1, 1, 1);
 
             // Assert
             Assert.NotNull(result);

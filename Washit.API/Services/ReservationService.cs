@@ -15,7 +15,7 @@ namespace washit.services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Reservation?> ReserveMachineAsync(int? userId, int washTypeId)
+        public async Task<Reservation?> ReserveMachineAsync(int? userId, int washTypeId, int machineId)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace washit.services
                     throw new Exception("Please Provide User Id");
                 }
 
-                var machine = await _repo.GetActiveMachineAsync(washTypeId);
+                var machine = await _repo.GetActiveMachineAsync(washTypeId,machineId);
 
                 if (machine == null)
                 {

@@ -12,7 +12,7 @@ namespace washit.repository
             _db = db;
         }
 
-        public async Task<Machine?> GetActiveMachineAsync(int washTypeId)
+        public async Task<Machine?> GetActiveMachineAsync(int washTypeId, int machineId)
         {
             using var conn = _db.CreateConnection();
             try
@@ -21,12 +21,13 @@ namespace washit.repository
                 string sql = @"
                 SELECT TOP 1 * FROM Machines m
                 WHERE m.WashTypeId = @washTypeId
+                AND m.Id = @machineId
                 AND NOT EXISTS (
                     SELECT 1 FROM Reservations r
                     WHERE r.MachineId = m.Id AND r.IsActive = 1
                 )";
 
-                return await conn.QueryFirstOrDefaultAsync<Machine>(sql, new { washTypeId });
+                return await conn.QueryFirstOrDefaultAsync<Machine>(sql, new { washTypeId, machineId });
             }
             catch (System.Exception)
             {
