@@ -1,7 +1,0 @@
-C:\My Data\Work\WEB API\washit\washit.tests\bin\Debug\net8.0\CoverletSourceRootsMapping_WashIt.Tests
-C:\My Data\Work\WEB API\washit\washit.tests\obj\Debug\net8.0\WashIt.Tests.csproj.AssemblyReference.cache
-C:\My Data\Work\WEB API\washit\washit.tests\obj\Debug\net8.0\WashIt.Tests.GeneratedMSBuildEditorConfig.editorconfig
-C:\My Data\Work\WEB API\washit\washit.tests\obj\Debug\net8.0\WashIt.Tests.AssemblyInfoInputs.cache
-C:\My Data\Work\WEB API\washit\washit.tests\obj\Debug\net8.0\WashIt.Tests.AssemblyInfo.cs
-C:\My Data\Work\WEB API\washit\washit.tests\obj\Debug\net8.0\WashIt.Tests.csproj.CoreCompileInputs.cache
-C:\My Data\Work\WEB API\washit\washit.tests\obj\Debug\net8.0\WashIt.Tests.sourcelink.json
