@@ -18,13 +18,22 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto dto)
     {
-        var user = await _userService.GetUserAsync(dto.UserName, dto.Password);
+        try
+        {
+            var user = await _userService.GetUserAsync(dto.UserName, dto.Password);
 
-        if (user == null) return Unauthorized(new { Message = "Invalid Credentials" });
+            if (user == null) return Unauthorized(new { Message = "Invalid Credentials" });
 
-        var token = _jwtService.GenerateToken(user);
+            var token = _jwtService.GenerateToken(user);
 
-        return Ok(new { token });
+            return Ok(new { token });
+
+        }
+        catch (System.Exception ex)
+        {
+
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPost("register")]

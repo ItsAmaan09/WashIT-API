@@ -24,7 +24,14 @@ namespace washit.controllers
         {
             try
             {
-                var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                // var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+
+                var userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value;
+                int? userId = null;
+                if (int.TryParse(userIdClaim, out var parsedUserId))
+                {
+                    userId = parsedUserId;
+                }
 
                 var result = await _service.ReserveMachineAsync(userId, dto.WashTypeId);
                 if (result == null) return BadRequest(result);
@@ -45,7 +52,13 @@ namespace washit.controllers
         {
             try
             {
-                var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                // var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                var userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value;
+                int? userId = null;
+                if (int.TryParse(userIdClaim, out var parsedUserId))
+                {
+                    userId = parsedUserId;
+                }
                 bool success = await _service.CancelReservationAsync(dto.ReservationId, userId);
                 if (!success) return BadRequest(success);
             }
@@ -63,7 +76,13 @@ namespace washit.controllers
         {
             try
             {
-                var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                // var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+                var userIdClaim = _httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value;
+                int? userId = null;
+                if (int.TryParse(userIdClaim, out var parsedUserId))
+                {
+                    userId = parsedUserId;
+                }
                 int id = await _service.JoinWaitingListAsync(userId, dto.WashTypeId);
                 return Ok(new { WaitingListId = id });
 
@@ -87,6 +106,7 @@ namespace washit.controllers
             try
             {
                 var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("UserId")?.Value);
+
                 var machines = await _service.GetMachinesWithStatusAsync(userId);
                 return Ok(machines);
             }
