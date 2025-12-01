@@ -6,9 +6,10 @@ namespace washit.services
     {
         Task<Reservation?> ReserveMachineAsync(int? userId, int washTypeId, int machineId);
         Task<bool> CancelReservationAsync(int reservationId,int? userId);
-        Task<int> JoinWaitingListAsync(int? userId, int washTypeId);
+        Task<int> JoinWaitingListAsync(int? userId, int washTypeId, int machineId);
         Task<IEnumerable<Machine>> GetMachines();
         Task<Reservation?> GetUserActiveReservationAsync(int? userId);
         Task<List<Machine>> GetMachinesWithStatusAsync(int userId);
+        Task<bool> CheckActiveWaitlistExist(int machineId, int? userId);
     }
 }

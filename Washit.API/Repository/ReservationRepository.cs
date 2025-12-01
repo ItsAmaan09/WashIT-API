@@ -1,5 +1,6 @@
 using Dapper;
 using washit.models;
+using washit.services;
 
 namespace washit.repository
 {
@@ -116,8 +117,8 @@ namespace washit.repository
             try
             {
                 string sql = @"
-                INSERT INTO WaitingList (WashTypeId,CreatedBy,UserId)
-                VALUES (@WashTypeId, @CreatedBy, @UserId);
+                INSERT INTO WaitingList (WashTypeId,CreatedBy,UserId, MachineId, IsActive)
+                VALUES (@WashTypeId, @CreatedBy, @UserId, @MachineId, 1);
                 SELECT SCOPE_IDENTITY();";
 
                 return await conn.ExecuteScalarAsync<int>(sql, entry);
@@ -197,5 +198,15 @@ namespace washit.repository
             return await conn.QueryFirstOrDefaultAsync<Reservation>(sql, new { UserId = userId });
         }
 
+        public async Task<bool> CheckActiveWaitlistExist(int machineId, int? userId)
+        {
+            using var conn = _db.CreateConnection();
+
+            string sql = @"SELECT COUNT(*) FROM WaitingList WHERE MachineId = @machineId AND UserId = @userId AND IsActive = 1";
+
+            int count =  await conn.ExecuteScalarAsync<int>(sql, new { machineId, userId });
+
+            return count > 0;
+        }
     }
 }

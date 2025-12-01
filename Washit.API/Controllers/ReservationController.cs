@@ -83,7 +83,7 @@ namespace washit.controllers
                 {
                     userId = parsedUserId;
                 }
-                int id = await _service.JoinWaitingListAsync(userId, dto.WashTypeId);
+                int id = await _service.JoinWaitingListAsync(userId, dto.WashTypeId, dto.MachineId);
                 return Ok(new { WaitingListId = id });
 
             }

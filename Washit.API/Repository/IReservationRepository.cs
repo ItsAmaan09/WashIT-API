@@ -14,6 +14,7 @@ namespace washit.repository
         Task<IEnumerable<Machine>> GetAllActiveMachineAsync();
         Task<Reservation?> GetActiveReservationByMachineIdAsync(int id);
         Task<Reservation?> GetUserActiveReservationAsync(int? userId);
+        Task<bool> CheckActiveWaitlistExist(int machineId, int? userId);
 
     }
 }

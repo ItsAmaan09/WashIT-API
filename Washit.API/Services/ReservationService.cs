@@ -24,7 +24,7 @@ namespace washit.services
                     throw new Exception("Please Provide User Id");
                 }
 
-                var machine = await _repo.GetActiveMachineAsync(washTypeId,machineId);
+                var machine = await _repo.GetActiveMachineAsync(washTypeId, machineId);
 
                 if (machine == null)
                 {
@@ -104,7 +104,7 @@ namespace washit.services
             }
         }
 
-        public async Task<int> JoinWaitingListAsync(int? userId, int washTypeId)
+        public async Task<int> JoinWaitingListAsync(int? userId, int washTypeId, int machineId)
         {
             try
             {
@@ -113,10 +113,16 @@ namespace washit.services
                     throw new Exception("User Id is required");
                 }
 
+                if (await CheckActiveWaitlistExist(machineId, userId))
+                {
+                    throw new Exception("You are already in the waitinglist.");
+                }
+
                 return await _repo.AddToWaitingListAsync(new WaitingListEntry
                 {
                     UserId = userId.Value,
                     WashTypeId = washTypeId,
+                    MachineId = machineId,
                     CreatedBy = userId.ToString()
                 });
 
@@ -186,5 +192,18 @@ namespace washit.services
             return machineStatusList;
         }
 
+
+        public async Task<bool> CheckActiveWaitlistExist(int machineId, int? userId)
+        {
+            try
+            {
+                return await _repo.CheckActiveWaitlistExist(machineId, userId);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
