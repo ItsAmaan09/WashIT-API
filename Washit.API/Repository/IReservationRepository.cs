@@ -9,7 +9,7 @@ namespace washit.repository
         Task<bool> CancelReservationAsync(int reservationId, int? userId);
         Task<int> AddToWaitingListAsync(WaitingListEntry entry);
         Task MarkUserAsNotifiedAsync(int id);
-        Task<WaitingListEntry?> GetNextWaitingUserAsync(int washTypeId);
+        Task<WaitingListEntry?> GetNextWaitingUserAsync(int washTypeId, int machineId);
         Task<Reservation?> GetReservationByIdAsync(int reservationId);
         Task<IEnumerable<Machine>> GetAllActiveMachineAsync();
         Task<Reservation?> GetActiveReservationByMachineIdAsync(int id);

@@ -135,7 +135,7 @@ namespace washit.repository
             }
         }
 
-        public async Task<WaitingListEntry?> GetNextWaitingUserAsync(int washTypeId)
+        public async Task<WaitingListEntry?> GetNextWaitingUserAsync(int washTypeId, int machineId)
         {
             try
             {
@@ -143,10 +143,10 @@ namespace washit.repository
                 using var conn = _db.CreateConnection();
                 string sql = @"
         SELECT TOP 1 * FROM WaitingList
-        WHERE WashTypeId = @WashTypeId AND Notified = 0
+        WHERE WashTypeId = @WashTypeId AND MachineId = @machineId AND Notified = 0
         ORDER BY CreatedAt ASC";
 
-                return await conn.QueryFirstOrDefaultAsync<WaitingListEntry>(sql, new { washTypeId });
+                return await conn.QueryFirstOrDefaultAsync<WaitingListEntry>(sql, new { washTypeId, machineId });
             }
             catch (System.Exception)
             {
@@ -204,7 +204,7 @@ namespace washit.repository
 
             string sql = @"SELECT COUNT(*) FROM WaitingList WHERE MachineId = @machineId AND UserId = @userId AND IsActive = 1";
 
-            int count =  await conn.ExecuteScalarAsync<int>(sql, new { machineId, userId });
+            int count = await conn.ExecuteScalarAsync<int>(sql, new { machineId, userId });
 
             return count > 0;
         }

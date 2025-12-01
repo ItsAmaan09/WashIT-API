@@ -60,7 +60,7 @@ namespace washit.services
 
         }
 
-        public async Task<bool> CancelReservationAsync(int reservationId, int? userId)
+        public async Task<bool> CancelReservationAsync(int reservationId, int? userId, int machineId)
         {
             try
             {
@@ -89,7 +89,7 @@ namespace washit.services
                 }
 
                 // Notify next user in waiting list
-                var nextUser = await _repo.GetNextWaitingUserAsync(reservation.WashTypeId);
+                var nextUser = await _repo.GetNextWaitingUserAsync(reservation.WashTypeId, machineId);
 
                 if (nextUser != null)
                 {

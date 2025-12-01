@@ -59,7 +59,7 @@ namespace washit.controllers
                 {
                     userId = parsedUserId;
                 }
-                bool success = await _service.CancelReservationAsync(dto.ReservationId, userId);
+                bool success = await _service.CancelReservationAsync(dto.ReservationId, userId, dto.MachineId);
                 if (!success) return BadRequest(success);
             }
             catch (System.Exception ex)

@@ -26,7 +26,7 @@ public class AuthController : ControllerBase
 
             var token = _jwtService.GenerateToken(user);
 
-            return Ok(new { token });
+            return Ok(new { token, user.UserName });
 
         }
         catch (System.Exception ex)
