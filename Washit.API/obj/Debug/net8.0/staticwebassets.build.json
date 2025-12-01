@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "CfDu+DQy2eCb/72DxgMn/BS9fafJ4SXFrcy3noSlIzc=",
-  "Source": "washit",
-  "BasePath": "_content/washit",
+  "Hash": "uEEleGXpHBMzMU++TydukggkA755dX+7jgZycRIaUi4=",
+  "Source": "Washit.API",
+  "BasePath": "_content/Washit.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
